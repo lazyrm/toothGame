@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="google" value="notranslate">
+		<meta name="imagemode" content="force">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+		<title>牙齿保卫战</title>
+		<link rel="stylesheet" href="css/index.css?t=2345">  
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	</head>
+	<body> 
+		<div class="audioBtn j-audioBtn" >
+			<audio id='audio' loop="loop" src="audio/music.mp3" autoplay="autoplay" preload='auto'>
+			</audio>
+		</div> 
+		<div class="loading">
+				<div class="pic">
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+						<i></i>
+				</div>
+		</div>
+
+		<section class="pg1 j-pg1" style="display: block">
+			<div class="beginBtn j-beginBtn">
+				<img src="img/beginBtn.png" class="img" alt="">
+			</div>
+			<div class="ruleBtn j-ruleBtn">
+					<img src="img/ruleText.png" class="img" alt="">
+			</div>
+			<div class="rule j-rule">
+				<div class="ruleImg"  >
+					<img src="img/rule.png"  class="img">
+					<div class="closeRule j-closeRule"><img src="img/closeBtn.png" class="img"></div>
+				</div>
+				
+			</div>
+			<div class="tool j-tool">
+				<div class="toolPoolImg">
+					<img src="img/toolPool.png"  class="img" alt="">
+					<div class="greenTool toolBrush j-toolBrush">
+						<img src="img/greenTool.png"  class="img curTool"  alt="">						
+					</div>
+					<div class="yellowTool toolBrush  j-toolBrush">
+						<img src="img/yellowTool.png"  class="img curTool"   alt="">
+					</div>
+					<div class="blueTool toolBrush  j-toolBrush">
+						<img src="img/blueTool.png"  class="img curTool"  alt="">
+					</div>
+					<div class="redTool toolBrush  j-toolBrush">
+						<img src="img/redTool.png"  class="img curTool"   alt="">
+					</div>
+					<div class="purpleTool toolBrush  j-toolBrush">
+						<img src="img/purpleTool.png"  class="img curTool" alt="">
+					</div>
+					<div class="sureBtn j-sureBtn">
+						<img src="img/sureBtn.png"  class="img"  class="img" alt="">
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<section class="pg2 j-pg2" style="display: none">			
+			<div class="totalScore">
+				<div class="scoreCenterBg"><span class="j-numTotal">0</span>
+					<div class="scoreRightBg"></div>
+				</div>								
+			</div>
+			<div class="teethList j-toothItem">
+				<div class="teeth"></div>
+				<div class="teeth"></div>
+				<div class="teeth"></div>
+			</div>
+			<div>
+				<div class="toolBox j-toolBox">
+						<img src="img/blueTool.png" class="img">						
+				</div>				
+				<div class="hole0 hole">
+					<div class="cell0 cell"></div>					
+				</div>
+				<div class="hole1 hole">
+					<div class="cell1 cell"></div>
+				</div>
+				<div class="hole2 hole">
+					<div class="cell2 cell"></div>
+				</div>
+				<div class="hole3 hole">
+					<div class="cell3 cell"></div> 
+				</div>
+				<div class="hole4 hole">
+					<div class="cell4 cell"></div>
+				</div>
+				<div class="hole5 hole">
+					<div class="cell5 cell">
+					</div>					
+				</div>
+				<div class="hole6 hole">
+					<div class="cell6 cell"></div>
+				</div>
+				<div class="hole7 hole">
+					<div class="cell7 cell"></div>
+				</div>
+				<div class="hole8 hole">
+					<div class="cell8 cell"></div>
+				</div>
+
+			</div>
+			<div class="rule j-endGame" style="display:none">
+				<div class="endGame">
+					<img src="img/endGame.png" class="img" >
+					<div class="replayBtn j-replayBtn"><img src="img/replayBtn.png" class="img"></div>
+				</div>
+			</div>
+		</section>
+		<audio id='audioFalse' preload='auto'>
+			<source src="audio/dazhong.mp3" />
+		</audio>
+		<audio id='audioTrue' preload='auto'>
+			<source src="audio/hitTrue.mp3" />
+		</audio>
+	</body>
+	<script src="./js/jquery.js"></script>
+	<script src="./js/game.js?t=2347"></script> 
+</html>

@@ -1,0 +1,374 @@
+*{
+  padding: 0;
+  margin: 0
+}
+html, body {
+  height: 100%;;
+}
+body{
+  width: 7.50rem;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+.img {
+  display: inline-block;
+  height: 100%;
+  max-width: 100%;
+}
+.loading{width: 100%;height: 100%;position: fixed;top:0;left: 0;z-index: 9999;background-color: #fff;}
+.loading .pic{width: 50px;height: 50px;position: absolute;top: 0;left: 0;bottom: 0;right: 0;margin: auto;}
+.loading .pic i{display: block;float: left;width: 6px;height: 50px;background-color: #399;margin: 0 2px;transform: scaleY(.4);animation: load 1.2s infinite;
+}
+.loading .pic i:nth-child(1){}
+.loading .pic i:nth-child(2){animation-delay: .1s; }
+.loading .pic i:nth-child(3){animation-delay: .2s;}
+.loading .pic i:nth-child(4){animation-delay: .3s;}
+.loading .pic i:nth-child(5){animation-delay: .4s;}
+@keyframes load{
+    0%,40%,100%{transform: scaleY(.4);}
+    20%{transform: scaleY(1);}
+}
+.pg1 {
+  width: 7.5rem;
+  height: 100%;
+  background: #64d8ea url(../img/beginBg.jpg) no-repeat top center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.beginBtn {  
+  width: 3.55rem;
+  height: 1.48rem;
+  position: absolute;
+  left: 26.7%;
+  top:6.84rem;
+}
+.rule, .tool {
+  display: none;
+  background: rgba(0,0,0, 0.5);
+  height: 100%;
+  position: relative;
+  z-index: 9998;
+}
+.ruleBtn {
+  width: 1.42rem;
+  height: 1.46rem;
+  position: absolute;
+  right: .38rem;
+  top: .42rem;
+  z-index: 9997;
+}
+.ruleImg {
+  width: 5.88rem;
+  height: 9.01rem;
+  position: absolute;
+  top: 1.14rem;
+  left: .78rem;
+
+}
+.closeRule {
+  width: 3.54rem;
+  height: 1.45rem;
+  position: absolute;
+  top: 7.90rem;
+  left:1.17rem;
+}
+.sureBtn {
+  width: 3.60rem;
+  height: 1.51rem;
+  position: absolute;
+  top: 8.23rem;
+  left:1.12rem;
+}
+.toolPoolImg {
+  width: 5.84rem;
+  height: 8.98rem;
+  position: absolute;
+  top: .76rem;
+  left:.83rem;
+}
+.toolBrush {
+  width: 1.63rem;
+  height: 1.87rem;
+}
+.greenTool {
+  position: absolute;
+  top: 3.94rem;
+  left:.47rem; 
+}
+.yellowTool {
+  position: absolute;
+  top: 3.94rem;
+  left:2.16rem; 
+}
+.blueTool {
+  position: absolute;
+  top: 3.94rem;
+  left: 3.88rem; 
+}
+.redTool {
+  position: absolute;
+  top: 6.33rem;
+  left: 1.24rem; 
+}
+.purpleTool {
+  position: absolute;
+  top: 6.33rem;
+  left: 3.00rem; 
+}
+/* playground */
+.pg2 {
+  width: 7.50rem;
+  display: none;
+  height: 100%;
+  background: #64d8ea url(../img/playBg.jpg) no-repeat top center;
+  background-size: 100% 13.34rem; 
+  position: relative;
+}
+
+.totalScore {
+  min-width: 2.84rem;
+  height: .85rem;
+  line-height: .85rem;
+  font-size: .50rem;
+  color: #fff;
+  background: url(../img/scoreLeftBg.png)  no-repeat left center;
+  position: absolute;
+  background-size: contain;
+  top:.25rem;
+  left: .29rem;
+}
+.scoreCenterBg {
+  background: url(../img/scoreCenterBg.png) repeat-x center;
+  height: .85rem;
+  line-height: .85rem;
+  position: absolute;
+  left:1.603rem;
+  background-size: 100% 100%;
+  text-indent: .20rem;
+}
+.scoreRightBg {
+  background: url(../img/scoreRightBg.png) no-repeat right center;
+  width: .45rem;
+  height: .85rem;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  right: -0.44rem;
+}
+.teethList {
+  background: url(../img/teethBg.png) no-repeat center;
+  width: 2.24rem;
+  height: .85rem;
+  position: absolute;
+  top: .25rem;
+  right: .29rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-size: contain;
+}
+.teeth {
+  background: url(../img/teeth.png) no-repeat center;
+  background-size: contain;
+  width: .41rem;
+  height: .47rem; 
+}
+.selectedTool{
+  width: .57rem;
+  height: .57rem;
+  position: absolute;
+  left: .81rem;
+  top: .93rem;
+  margin-left: -.23rem;
+  margin-top: -.23rem;
+}
+.holeList {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -.94rem;
+}
+.hole0 {
+  position: absolute;
+  left: .74rem;
+  top: 5.70rem;
+}
+.hole1 {
+  position: absolute;
+  left: 2.90rem;
+  top: 5.70rem;
+}
+.hole2 {
+  position: absolute;
+  left: 5.02rem;
+  top: 5.70rem;
+}
+.hole3 {
+  position: absolute;
+  left: .74rem;
+  top: 7.6rem;
+}
+.hole4 {
+  position: absolute;
+  left: 2.90rem;
+  top: 7.60rem;
+}
+.hole5 {
+  position: absolute;
+  left: 5.02rem;
+  top: 7.60rem;
+}
+
+.hole6 {
+  position: absolute;
+  left: .74rem;
+  top: 9.60rem;
+}
+.hole7 {
+  position: absolute;
+  left: 2.90rem;
+  top: 9.60rem;
+}
+.hole8 {
+  position: absolute;
+  left: 5.02rem;
+  top: 9.60rem;
+}
+.endGame {
+  width: 5.81rem;
+  height: 6.33rem;
+  position: absolute;
+  left:.84rem;
+  top:1.17rem;
+}
+.replayBtn {
+  position: absolute;
+  width: 3.54rem;
+  height: 1.5rem;
+  left:1.11rem;
+  top:5.44rem;
+}
+.cell {
+  width: 1.75rem;
+  height: 1.55rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.hole {
+  width: 1.75rem;
+  height: 1.55rem;
+  text-align: center
+} 
+@keyframes mouse-move { 
+
+  50% {
+      margin-top: 0rem;
+      opacity: 1;
+  } 
+  100% {
+      margin-top: 1.77rem;
+      opacity: 0;
+  }
+}
+.monster {
+  width: 1.75rem;
+  height: 1.55rem;
+  /* margin-top:200rem */
+}
+@keyframes tool-move {
+  0% {
+    transform: rotate(0deg); 
+  }
+  90% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(-30deg);
+  }
+}
+.toolBox {
+  width: 1.30rem;
+  height: 1.49rem;
+  position: absolute;
+  left: 50%;
+  top: 4.5rem;
+  margin-left: -0.65rem;
+  z-index: 9998;
+}
+.bong {
+  width: 1.30rem;
+  height: 1.49rem;
+  /* position: absolute;
+  right: -.40rem;
+  top: 0; */
+  
+  animation: tool-move 0.2s 1
+}
+@keyframes number-move {
+  0% {
+    opacity: 1; 
+  }
+  50% {
+    top: -.20rem;
+    opacity: 0.9;
+  }
+  80% {
+    top: -.30rem;
+    opacity: 0.5;
+  }
+  100% {
+    top: -.40rem;
+    opacity: 0;
+  }
+}
+.score {  
+  font-size: .5rem;
+  position: relative;
+  background: #f04242;
+  color: #fff;
+  z-index: 9999;
+  border-radius: 30%;
+  font-weight: bolder;
+  animation: number-move 0.8s 1;
+  display: inline-block;
+  padding: 0.1rem 0.2rem
+}
+
+.audioBtn {
+  position: absolute;
+  right: 0.4rem;
+  top: 1.3rem;
+  z-index: 200;
+  width: 1rem;
+  height: 1rem;
+  opacity: 0;
+  background-image: url(../img/music.svg);
+  background-repeat: no-repeat;
+  background-size: contain
+}
+.rotate {
+  -webkit-animation: rotating 1.2s linear infinite;
+  animation: rotating 1.2s linear infinite
+}
+
+@-webkit-keyframes rotating {
+  from {
+      -webkit-transform: rotate(0deg)
+  }
+
+  to {
+      -webkit-transform: rotate(360deg)
+  }
+}
+
+@keyframes rotating {
+  from {
+      transform: rotate(0deg)
+  }
+
+  to {
+      transform: rotate(360deg)
+  }
+}
