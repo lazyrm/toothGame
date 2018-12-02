@@ -95,10 +95,10 @@ game.prototype = {
       var x = e.clientX
       var y = e.clientY
       var curBong = $('.bong');
-      var that = $(this)      
+      var that = $(this)
       curBong.removeClass('bong')
       toolBox.animate({'left': x + 'px', 'top': y + 'px'}, 50, function() {
-        toolBox.find('.img').addClass('bong')        
+        toolBox.find('.img').addClass('bong')
         that.animate({"margin-top":"2rem"},function () {
           that.remove() 
           _this.notEnoughtTime()
@@ -138,11 +138,16 @@ game.prototype = {
         _this.score += scoreData.monster3
         score = scoreData.monster3
       }
-      _html.closest('.hole').append('<span class="score">' + score + '</span>')
+      _html.closest('.hole').after('<span class="score">' + score + '</span>')      
+      var string = _html.closest('.hole').prop("className") 
+      var curHole = string.replace(/[^\d]/g,"")
+      var _score = $('.score')
+      _score.addClass('hole' + curHole)
+      _score.animate({'left': '1.602rem', 'top': '.25rem', 'opacity': '0'}, 800)
       $('.j-numTotal').text(_this.score)
       _this.changeSpeed(_this.score)
       setTimeout(function (){
-        $('.score').remove()
+        _score.remove()
       }, 600)
     }
   },
