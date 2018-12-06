@@ -32,17 +32,19 @@ body{
   width: 7.5rem;
   height: 100%;
   background: #64d8ea url(../img/beginBg.jpg) no-repeat top center;
-  background-size: 100% 100%;
+  background-size: 100% 13.34rem;
   position: relative;
+  overflow: hidden;
 }
 .beginBtn {  
   width: 3.55rem;
   height: 1.48rem;
   position: absolute;
   left: 26.7%;
-  top:6.84rem;
+  top:7.98rem;
+  animation: btnScale 1s ease-in-out infinite
 }
-.rule, .tool {
+.rule, .tool, .rank {
   display: none;
   background: rgba(0,0,0, 0.5);
   height: 100%;
@@ -50,12 +52,29 @@ body{
   z-index: 9998;
 }
 .ruleBtn {
-  width: 1.42rem;
-  height: 1.46rem;
   position: absolute;
-  right: .38rem;
-  top: .42rem;
+  width: 1.78rem;
+  height: 0.63rem;  
+  left: 2.4rem;
+  top: .41rem;
   z-index: 9997;
+  font-size: 0
+}
+.rankBtn {
+  position: absolute;
+  width: 1.78rem;
+  height: 0.63rem;  
+  left: .40rem;
+  top: .41rem;
+  z-index: 9997;
+  font-size: 0
+}
+.closeRank {
+  width: 3.54rem;
+  height: 1.45rem;
+  position: absolute;
+  top: 8.70rem;
+  left: 1.17rem;
 }
 .ruleImg {
   width: 5.88rem;
@@ -63,7 +82,88 @@ body{
   position: absolute;
   top: 1.14rem;
   left: .78rem;
+}
+.rankImg {
+  width: 5.82rem;
+  height: 9.44rem;
+  position: absolute;
+  top: 0.68rem;
+  left: .84rem;
+}
+.rankList {
+  width: 4.14rem;
+  height: 4.07rem;
+  position: absolute;
+  top:4rem;
+  left:0.89rem;
+  overflow-y:scroll;
+  overflow-x: hidden;
+}
+.rankList::-webkit-scrollbar{
+  width: 0rem;
+  background-color: #F5F5F5;
+}
+.rankList::-webkit-scrollbar-thumb {
+  background-color: #F5F5F5;
+}
+.rankList::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #fff;
+}
+.rankListItem {
+  overflow: hidden;
+  height: 0.96rem;
+  font-size: 0;
+  position: relative;
+  padding-bottom: 0.14rem;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 0.3rem;
+}
+.userMsg {
+  float: left;
+  color: #fff;
+}
+.userMsg img {
+  width: 0.96rem;
+  height: 0.96rem;
+  border-radius: 50%;  
+  font-size: 0;
+  border: 1px solid #ccc
+}
+.userMsg .userName {
+  position: absolute;
+  top: 0.1rem;
+  left: 1.2rem;
+  width: auto;
+  display: inline-block;
+  word-break: keep-all;
+  font-size: .26rem;
+}
+.userMsg .userScore {
+  position: absolute;
+  left: 1.2rem;
+  bottom: 0.2rem;
+  font-size: .26rem;
+  display: inline-block;
+}
 
+.rankNum {
+  float: right;
+  font-size: .45rem;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0.24rem;
+}
+.rankList .rankListItem:nth-child(1) .rankNum{
+  color: red
+}
+.rankList .rankListItem:nth-child(2) .rankNum{
+  color: yellow
+}
+.rankList .rankListItem:nth-child(3) .rankNum{
+  color: blue
 }
 .closeRule {
   width: 3.54rem;
@@ -89,6 +189,7 @@ body{
 .toolBrush {
   width: 1.63rem;
   height: 1.87rem;
+  animation: zoomIn 1s ease-in-out 1
 }
 .greenTool {
   position: absolute;
@@ -177,8 +278,8 @@ body{
   width: .57rem;
   height: .57rem;
   position: absolute;
-  left: .81rem;
-  top: .93rem;
+  right: 0rem;
+  top: 0.5rem;
   margin-left: -.23rem;
   margin-top: -.23rem;
 }
@@ -368,3 +469,113 @@ body{
       transform: rotate(360deg)
   }
 }
+
+.litterBanner {
+  width: 4.8rem;
+  height: .98rem;
+  position: absolute;
+  top: 6.3rem;
+  left:1.42rem;
+}
+
+@keyframes btnScale {
+  from {
+    transform: scale(1)
+  }
+  50% {
+    transform: scale(1.05)
+  }
+  to {
+    transform: rotate(1)
+  }
+}
+
+.flipInX {
+  -webkit-backface-visibility: visible!important;
+  backface-visibility: visible!important;
+  animation-name: flipInX;
+  animation-duration: 1s;
+  animation-iteration-count:infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotateX(20deg);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: perspective(400px) rotateX(-20deg);
+    animation-timing-function: ease-in;
+  }
+  to {
+      transform: perspective(400px) rotateX(20deg)
+  }
+}
+.balloon1 {
+  width: 1.76rem;
+  height: 2.18rem;
+  position: absolute;
+  right: -1.76rem;
+  top: 3.44rem;
+  z-index: 9996;
+  animation: balloon1Move 14s ease-in-out infinite alternate
+}
+.balloon2 {
+  width: 1.25rem;
+  height: 1.23rem;
+  position: absolute;
+  left: 0.96rem;
+  top: 0.68rem;
+  z-index: 9996;
+  animation: balloon2Move 6s ease-in-out infinite alternate
+}
+@keyframes  balloon1Move {
+  0% {
+    transform: translate(-0.16rem,-0rem);
+    animation-timing-function: ease-in;
+  } 
+  to {
+    transform: translate(-1.9rem,-5.5rem);
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes  balloon2Move {
+  0% {
+    transform: translateX(0.4rem)
+  } 
+  to {
+    transform: translateX(-0.4rem)
+  }
+}
+.monsterGif {
+  width: 1.22rem;
+  height: 1.01rem;
+  position: absolute;
+  top: 10.7rem;
+  left: 2.43rem;
+  animation: monsterGifMove 2s ease-in-out infinite alternate
+}
+@keyframes monsterGifMove {
+  0% {
+    transform: translateY(0.1rem)
+  } 
+  50% {
+    transform: translateY(0rem)
+  } 
+  to {
+    transform: translateX(0.25rem)
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+      opacity: 0;
+      transform: scale3d(.3,.3,.3)
+  }
+
+  50% {
+      opacity: 1
+  }
+}
+

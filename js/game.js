@@ -228,13 +228,16 @@ game.prototype = {
     $('.j-ruleBtn').click(function () {
       $('.j-rule').show()
     })
+    $('.j-rankBtn').click(function () {
+      $('.rank').show()
+    })
     $('.j-toolBrush').click(function() {
       $('.j-selectedTool').remove()
       var selectedHtml = '<img src="img/selected.png"  class="img selectedTool j-selectedTool">'
       $(this).append(selectedHtml) 
     })
     $('.j-closeRule').click(function () {
-      $('.j-rule').hide()
+      $('.j-rule, .rank').hide()
     })
     $('.j-sureBtn').click(function () {
       var curTool = $('.j-selectedTool').siblings('.curTool')
