@@ -114,6 +114,7 @@ game.prototype = {
   scoreCount: function (_html) {
     var _this = this
     if (_html.hasClass('monster0')) {
+      $('#audioFalse')[0].currentTime = 0
       $('#audioFalse')[0].play()
       if ($('.j-toothItem').children().length === 0) {
         _this.endGame()
@@ -121,6 +122,7 @@ game.prototype = {
         $('.j-toothItem').children().first().remove();       
       } 
     } else {
+      $('#audioTrue')[0].currentTime = 0.1
       $('#audioTrue')[0].play()
       var scoreData = {
         monster1: 10,
@@ -129,13 +131,10 @@ game.prototype = {
       }
       var score = 10
       if (_html.hasClass('monster1')) {
-        _this.score += scoreData.monster1
         score = scoreData.monster1
       } else if (_html.hasClass('monster2')) {
-        _this.score += scoreData.monster2
         score = scoreData.monster2
       } else {
-        _this.score += scoreData.monster3
         score = scoreData.monster3
       }
       _html.closest('.hole').after('<span class="score">' + score + '</span>')      
@@ -143,8 +142,10 @@ game.prototype = {
       var curHole = string.replace(/[^\d]/g,"")
       var _score = $('.score')
       _score.addClass('hole' + curHole)
-      _score.animate({'left': '1.602rem', 'top': '.25rem', 'opacity': '0'}, 800)
-      $('.j-numTotal').text(_this.score)
+      _score.animate({'left': '1.602rem', 'top': '.25rem', 'opacity': '0'}, 800, function() {
+        _this.score += score
+        $('.j-numTotal').text(_this.score)
+      })
       _this.changeSpeed(_this.score)
       setTimeout(function (){
         _score.remove()

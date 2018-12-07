@@ -519,7 +519,7 @@ body{
   right: -1.76rem;
   top: 3.44rem;
   z-index: 9996;
-  animation: balloon1Move 14s ease-in-out infinite alternate
+  animation: balloon1Move 8s ease-in-out infinite alternate
 }
 .balloon2 {
   width: 1.25rem;
@@ -528,7 +528,7 @@ body{
   left: 0.96rem;
   top: 0.68rem;
   z-index: 9996;
-  animation: balloon2Move 6s ease-in-out infinite alternate
+  animation: balloon2Move 3s ease-in-out infinite alternate
 }
 @keyframes  balloon1Move {
   0% {
@@ -537,7 +537,7 @@ body{
   } 
   to {
     transform: translate(-1.9rem,-5.5rem);
-    animation-timing-function: ease-out;
+    animation-timing-function: ease-in;
   }
 }
 @keyframes  balloon2Move {
