@@ -224,6 +224,7 @@ body{
   background: #64d8ea url(../img/playBg.jpg) no-repeat top center;
   background-size: 100% 13.34rem; 
   position: relative;
+  overflow: hidden;
 }
 
 .totalScore {
@@ -255,6 +256,40 @@ body{
   position: absolute;
   top: 0;
   right: -0.44rem;
+}
+.mouthWrap {
+  width: 7.5rem;
+  height: 8rem;
+  position: absolute;
+  background: url(../img/mouth4.png) no-repeat center;
+  background-size: 100% 100%;
+  top: 4.48rem;
+  /* overflow: hidden; */
+  animation: mouthGif 0.8s ease 1;
+}
+.titleBanner {
+  width: 5.56rem;
+  height: 4.09rem;
+  position: absolute;
+  top: 1rem;
+  left: 1.05rem;
+  z-index: 9998;
+}
+.footerImg {
+  width: 7.5rem;
+  height: 1.49rem;
+  position: absolute;
+  bottom: 0;
+}
+@keyframes mouthGif{
+  0%  {background:url(../img/mouth1.png) no-repeat center;background-size: 100% 100%}
+	25%  {background:url(../img/mouth1.png) no-repeat center;background-size: 100% 100%}
+	50% {background:url(../img/mouth2.png) no-repeat center;background-size: 100% 100%}
+	75% {background:url(../img/mouth3.png) no-repeat center;background-size: 100% 100%}
+	100% {background:url(../img/mouth4.png) no-repeat center;background-size: 100% 100%}
+}
+.mouthWrap div{
+  display: none;
 }
 .teethList {
   background: url(../img/teethBg.png) no-repeat center;
@@ -292,48 +327,48 @@ body{
 .hole0 {
   position: absolute;
   left: .74rem;
-  top: 5.70rem;
+  top: 1.2rem;
 }
 .hole1 {
   position: absolute;
   left: 2.90rem;
-  top: 5.70rem;
+  top: 1.2rem;
 }
 .hole2 {
   position: absolute;
   left: 5.02rem;
-  top: 5.70rem;
+  top: 1.2rem;
 }
 .hole3 {
   position: absolute;
   left: .74rem;
-  top: 7.6rem;
+  top: 3.10rem;
 }
 .hole4 {
   position: absolute;
   left: 2.90rem;
-  top: 7.60rem;
+  top: 3.10rem;
 }
 .hole5 {
   position: absolute;
   left: 5.02rem;
-  top: 7.60rem;
+  top: 3.10rem;
 }
 
 .hole6 {
   position: absolute;
   left: .74rem;
-  top: 9.60rem;
+  top: 5rem;
 }
 .hole7 {
   position: absolute;
   left: 2.90rem;
-  top: 9.60rem;
+  top: 5rem;
 }
 .hole8 {
   position: absolute;
   left: 5.02rem;
-  top: 9.60rem;
+  top: 5rem;
 }
 .endGame {
   width: 5.81rem;
@@ -394,7 +429,7 @@ body{
   height: 1.49rem;
   position: absolute;
   left: 50%;
-  top: 4.5rem;
+  top: 4.7rem;
   margin-left: -0.65rem;
   z-index: 9998;
 }
@@ -430,7 +465,8 @@ body{
   display: inline-block;
   padding: 0.1rem 0.2rem;
   margin-left: 0.3rem;
- 
+  position: absolute;
+  z-index: 9999;
 }
 
 .audioBtn {
@@ -536,7 +572,7 @@ body{
     animation-timing-function: ease-in;
   } 
   to {
-    transform: translate(-1.9rem,-5.5rem);
+    transform: translate(-1.9rem,-8.5rem);
     animation-timing-function: ease-in;
   }
 }

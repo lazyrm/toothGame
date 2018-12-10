@@ -84,9 +84,9 @@ game.prototype = {
       $('.j-good').attr('src', 'img/goodLeve2.png')
     } else if (badLength > 7) {
       $('.j-good').attr('src', 'img/goodLeve3.png')
-    } else if (badLength < 5) {
+    } else if ( badLength >=2 && badLength < 5) {
       $('.j-good').attr('src', 'img/monster0.png')
-    }
+    } 
   },
   clickEvent: function () {
     var _this = this    
@@ -102,10 +102,15 @@ game.prototype = {
         that.animate({"margin-top":"2rem"},function () {
           that.remove() 
           _this.notEnoughtTime()
+          var badLength = $('.j-bad').length
+          if (badLength <=1) {
+            _this.showMouse()
+          }
         })
       })      
-      _this.scoreCount(that) 
+      _this.scoreCount(that)      
     })
+    
   },
   /**
    * 计算分数
@@ -142,7 +147,7 @@ game.prototype = {
       var curHole = string.replace(/[^\d]/g,"")
       var _score = $('.score')
       _score.addClass('hole' + curHole)
-      _score.animate({'left': '1.602rem', 'top': '.25rem', 'opacity': '0'}, 800, function() {
+      _score.animate({'left': '1rem', 'top': '-4.5rem', 'opacity': '0'}, 800, function() {
         _this.score += score
         $('.j-numTotal').text(_this.score)
       })
@@ -175,7 +180,12 @@ game.prototype = {
     var _this = this;   
     _this.start = true;
     _this.audioEvent()
-    _this.showMouse() 
+    _this.showMouse()    
+    var mouthWrap = document.getElementById("j-mouthWrap");
+    // 动画结束时事件
+    mouthWrap.addEventListener("webkitAnimationEnd", function() {
+      $('#j-mouthWrap div').show()
+    })
     _this.interId = setInterval(function() {_this.showMouse()}, _this.timeSpeed)
     $('.j-numTotal').text(_this.score)
   },
@@ -190,12 +200,17 @@ game.prototype = {
   replayGame: function () {
     var _this = this
     $('.j-replayBtn').click(function () {
+      var mouthWrap = $('#j-mouthWrap')
       $('.j-endGame').hide()
       $('.j-numTotal').text('0')
+      mouthWrap.removeClass('mouthWrap')
+      mouthWrap.find('div').hide()
       _this.start = false
       _this.score = 0
       $('.j-toothItem').html('<div class="teeth"></div><div class="teeth"></div><div class="teeth"></div>')
       _this.startGame()
+      $(".j-toolBox").removeAttr("style");
+      mouthWrap.addClass('mouthWrap')      
     })
   },
   audioEvent: function () {
