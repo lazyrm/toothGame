@@ -615,3 +615,9 @@ body{
   }
 }
 
+.noRankList {
+  font-size: 0.4rem;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}

@@ -84,7 +84,7 @@ game.prototype = {
       $('.j-good').attr('src', 'img/goodLeve2.png')
     } else if (badLength > 7) {
       $('.j-good').attr('src', 'img/goodLeve3.png')
-    } else if ( badLength >=2 && badLength < 5) {
+    } else if (badLength < 5) {
       $('.j-good').attr('src', 'img/monster0.png')
     } 
   },
@@ -103,7 +103,7 @@ game.prototype = {
           that.remove() 
           _this.notEnoughtTime()
           var badLength = $('.j-bad').length
-          if (badLength <=1) {
+          if (badLength === 0) {
             _this.showMouse()
           }
         })
@@ -189,13 +189,16 @@ game.prototype = {
     _this.interId = setInterval(function() {_this.showMouse()}, _this.timeSpeed)
     $('.j-numTotal').text(_this.score)
   },
+  // 结束游戏
   endGame: function () {
     var _this = this
     $('.cell').html('')
     clearInterval(_this.interId)    
     $('.j-endGame').show()  
     _this.start = false
+    _this.saveScore()
     _this.replayGame()
+
   },
   replayGame: function () {
     var _this = this
@@ -246,6 +249,7 @@ game.prototype = {
     })
     $('.j-rankBtn').click(function () {
       $('.rank').show()
+      _this.getToplist()
     })
     $('.j-toolBrush').click(function() {
       $('.j-selectedTool').remove()
@@ -263,17 +267,166 @@ game.prototype = {
       $('.j-toolBox').html(_this.toolBrush)
       _this.startGame()
     }) 
-  }
+  },
+  getAuthorize: function () {
+    $.ajax({
+      url: '/wechat/authorize',
+      type: "get",
+      success: function(res) {
+
+      },
+      error: function(res) {
+        console.log(res)
+      }
+    });
+  },
+  // 获取排名列表
+  getToplist: function () {
+    $.ajax({
+      url: '/api/result/toplist',
+      type: "post",
+      success: function(res) {
+        if (res.code === 0) {
+          if (res.data > 0) {
+            var _html = '' 
+            res.data.filter(item => {
+              _html += '<div class="rankListItem">'+
+                          '<div class="userMsg">'+
+                            '<img src="' + res.data.value.headimgurl +'">'+
+                            '<span class="userName">'+ res.data.nickname +'</span>'+
+                            '<span class="userScore">' + res.score +'</span>'+
+                          '</div>'+
+                          '<div class="rankNum">1</div>'+
+                        '</div>'
+            })
+            $('.j-rankList').html(_html)
+          } else {
+            $('.j-rankList').html('<div class="noRankList">暂无排名</div>')
+          }
+        } else {
+          alert(res.msg)
+        }
+      },
+      error: function(res) {
+        console.log(res)
+      }
+    });    
+  },
+  // 保存分数
+  saveScore: function () {
+    var _this = this
+    $.ajax({
+      url: '/api/result/save',
+      type: "post",
+      data: {score: parseInt(_this.score)},
+      success: function(res) {
+        if (res.code === 0) {
+          console.log(res.msg)
+        } else {
+          alert(res.msg)
+        }
+      },
+      error: function(res) {
+        console.log(res)
+      }
+    });     
+  }  
 }
 new game()
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  function audioAutoPlay() {
-      document.addEventListener("WeixinJSBridgeReady", function () {      
-        var audio = document.getElementById('audio');
-        audio.pause()
-      }, false);
+wxShare = function(){
+  try{
+		var appid;
+		var signature;
+		var nonceStr;
+		var timestamp;
+		var url = document.location.href;
+		var geturl = "/api/wechat/initjssdk";
+		$.getJSON(geturl,{url:url},function(json){
+			signature = json.signature;
+			appid = json.appId;
+			timestamp = json.timestamp;
+			nonceStr = json.nonceStr;
+			wx.config({
+				debug: false,
+				appId: appid,
+				timestamp: timestamp,
+				nonceStr: nonceStr,
+				signature: signature,
+				jsApiList: ['checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','hideMenuItems','startRecord','stopRecord','translateVoice','playVoice','uploadVoice','downloadVoice','chooseImage','previewImage','uploadImage','downloadImage']
+			});
+		})
+    var imgUrl = "img/share.jpg"; // 这个貌似要个绝对地址
+    var lineLink = "http://toothgame.ckdcloud.com/"; // 点击分享后跳转的页面地址
+    var descContent = "每天刷牙我健康"; // 分享后的描述信息
+    var shareTitle = "牙齿保卫战"; // 分享后的标题
+    wx.ready(function(){
+      document.getElementById("audio").pause(); 
+      wx.onMenuShareAppMessage({
+        title: shareTitle,
+        desc: descContent,
+        link: lineLink,
+        imgUrl: imgUrl,
+        trigger: function(res){},
+        success: function(res){ 
+        },
+        cancel: function(res){},
+        fail: function(res){}
+      });
+      wx.onMenuShareTimeline({
+        title: shareTitle,
+        link: lineLink,
+        imgUrl: imgUrl,
+        trigger: function(res){},
+        success: function(res){ 
+        },
+        cancel: function(res){},
+        fail: function(res){}
+      });
+      wx.onMenuShareQQ({
+        title: shareTitle,
+        desc: descContent,
+        link: lineLink,
+        imgUrl: imgUrl,
+        trigger: function(res){},
+        success: function(res){
+ 
+        },
+        cancel: function(res){},
+        fail: function(res){}
+      });
+      wx.onMenuShareWeibo({
+        title: shareTitle,
+        desc: descContent,
+        link: lineLink,
+        imgUrl: imgUrl,
+        trigger: function(res){},
+        success: function(res){ 
+        },
+        cancel: function(res){},
+        fail: function(res){}
+      });
+      wx.hideMenuItems({
+        menuList: [
+        ],
+        success: function (res) {
+        //alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+        },
+        fail: function (res) {
+        //alert(JSON.stringify(res));
+        }
+      });
+    });
+  }catch(e){
+    alert(e);
   }
-  audioAutoPlay();
-}); 
+}
+wxShare();
+window.alert = function(name){
+  var iframe = document.createElement("IFRAME");
+ iframe.style.display="none";
+ iframe.setAttribute("src", 'data:text/plain,');
+ document.documentElement.appendChild(iframe);
+ window.frames[0].window.alert(name);
+ iframe.parentNode.removeChild(iframe);
+ }
