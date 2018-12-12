@@ -25,7 +25,7 @@ function game() {
   this.toolBrush = '' // 牙刷颜色
   this.initTimes = 0 // 初始倍速
   this.othersEvent()
-
+  this.getAuthorize()
 }
 game.prototype = {
   constructor: game,
@@ -269,6 +269,7 @@ game.prototype = {
     }) 
   },
   getAuthorize: function () {
+    if (document.cookie.length <=0) return false
     $.ajax({
       url: '/wechat/authorize',
       type: "get",
@@ -287,16 +288,17 @@ game.prototype = {
       type: "post",
       success: function(res) {
         if (res.code === 0) {
-          if (res.data > 0) {
+          if (res.data.length > 0) {
             var _html = '' 
-            res.data.filter(item => {
+            res.data.filter((item,index) => {
+              var userMsg = parseInt(item.value)
               _html += '<div class="rankListItem">'+
                           '<div class="userMsg">'+
-                            '<img src="' + res.data.value.headimgurl +'">'+
-                            '<span class="userName">'+ res.data.nickname +'</span>'+
-                            '<span class="userScore">' + res.score +'</span>'+
+                            '<img src="' + userMsg.headimgurl +'">'+
+                            '<span class="userName">'+ userMsg.nickname +'</span>'+
+                            '<span class="userScore">' + item.score +'</span>'+
                           '</div>'+
-                          '<div class="rankNum">1</div>'+
+                          '<div class="rankNum">'+ (index+1) +'</div>'+
                         '</div>'
             })
             $('.j-rankList').html(_html)
